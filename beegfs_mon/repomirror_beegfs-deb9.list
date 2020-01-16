@@ -1,0 +1,6 @@
+# BeeGFS Repository URLs for use in an air-gapped environment.
+# If you have an active BeeGFS support contract, use the alternative URL below
+# to retrieve early updates. Replace username/password with your account for
+# the BeeGFS customer login area.
+#deb [arch=amd64]  https://username:password@www.beegfs.io/login/release/beegfs_7_1 stretch non-free
+deb [arch=amd64] http://repomirror-ict.eng.netapp.com/beegfs/beegfs_7_1 stretch non-free

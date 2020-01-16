@@ -1,0 +1,897 @@
+{
+    "dashboard": {
+	"annotations": {
+	    "list": [
+		{
+		    "builtIn": 1,
+		    "datasource": "-- Grafana --",
+		    "enable": true,
+		    "hide": true,
+		    "iconColor": "rgba(0, 211, 255, 1)",
+		    "name": "Annotations & Alerts",
+		    "type": "dashboard"
+		}
+	    ]
+	},
+	"description": "Aggregated space utilization on storage targets.",
+	"editable": true,
+	"gnetId": null,
+	"graphTooltip": 0,
+	"id": null,
+	"links": [
+	    {
+		"asDropdown": true,
+		"icon": "external link",
+		"tags": [
+		    "BeeGFS Plugin"
+		],
+		"title": "Related Dashboards",
+		"type": "dashboards"
+	    }
+	],
+	"panels": [
+	    {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		    "h": 1,
+		    "w": 24,
+		    "x": 0,
+		    "y": 1
+		},
+		"id": 8,
+		"panels": [],
+		"title": "BeeGFS Reported Target Utilization",
+		"type": "row"
+	    },
+	    {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"description": "Storage target utilization as reported by BeeGFS (i.e. beegfs-df).",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 8,
+		    "x": 0,
+		    "y": 2
+		},
+		"id": 6,
+		"legend": {
+		    "avg": false,
+		    "current": true,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": true,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "$tag_storageTargetID",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "storageTargetID"
+				],
+				"type": "tag"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"hide": false,
+			"measurement": "storageTargets",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT max(\"diskSpaceTotal\") - max(\"diskSpaceFree\") FROM \"storageTargets\" WHERE $timeFilter GROUP BY time($__interval), \"storageTargetID\" fill(none)",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"diskSpaceTotal"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ],
+			    [
+				{
+				    "params": [
+					"diskSpaceFree"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": []
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Used Space on Storage Targets",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 8,
+		    "x": 8,
+		    "y": 2
+		},
+		"id": 2,
+		"legend": {
+		    "alignAsTable": false,
+		    "avg": false,
+		    "current": true,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"repeat": null,
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": true,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "$tag_storageTargetID",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "storageTargetID"
+				],
+				"type": "tag"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "storageTargets",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"diskSpaceFree"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": []
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Free Space on Storage Targets",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 8,
+		    "x": 16,
+		    "y": 2
+		},
+		"id": 4,
+		"legend": {
+		    "avg": false,
+		    "current": true,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": true,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "$tag_storageTargetID",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "storageTargetID"
+				],
+				"type": "tag"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "storageTargets",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"diskSpaceTotal"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": []
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Total Space on Storage Targets",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"decimals": null,
+			"format": "bytes",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		    "h": 1,
+		    "w": 24,
+		    "x": 0,
+		    "y": 9
+		},
+		"id": 10,
+		"panels": [],
+		"title": "BeeGFS Reported Inode Utilization",
+		"type": "row"
+	    },
+	    {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"description": "Storage target utilization as reported by BeeGFS (i.e. beegfs-df).",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 6,
+		    "w": 8,
+		    "x": 0,
+		    "y": 10
+		},
+		"id": 11,
+		"legend": {
+		    "avg": false,
+		    "current": true,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": true,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "$tag_storageTargetID",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "storageTargetID"
+				],
+				"type": "tag"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"hide": false,
+			"measurement": "storageTargets",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT max(\"inodesTotal\") - max(\"inodesFree\") FROM \"storageTargets\" WHERE $timeFilter GROUP BY time($__interval), \"storageTargetID\" fill(none)",
+			"rawQuery": true,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"diskSpaceTotal"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ],
+			    [
+				{
+				    "params": [
+					"diskSpaceFree"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": []
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Used Inodes on Storage Targets",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"format": "none",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 6,
+		    "w": 8,
+		    "x": 8,
+		    "y": 10
+		},
+		"id": 12,
+		"legend": {
+		    "avg": false,
+		    "current": true,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": true,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "$tag_storageTargetID",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "storageTargetID"
+				],
+				"type": "tag"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"hide": false,
+			"measurement": "storageTargets",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT max(\"diskSpaceTotal\") FROM \"storageTargets\" WHERE $timeFilter GROUP BY time($__interval), \"storageTargetID\" fill(none)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"inodesFree"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": []
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Free Inodes on Storage Targets",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"format": "none",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 6,
+		    "w": 8,
+		    "x": 16,
+		    "y": 10
+		},
+		"id": 13,
+		"legend": {
+		    "avg": false,
+		    "current": true,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": true
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": true,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "$tag_storageTargetID",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "storageTargetID"
+				],
+				"type": "tag"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"hide": false,
+			"measurement": "storageTargets",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT max(\"diskSpaceTotal\") FROM \"storageTargets\" WHERE $timeFilter GROUP BY time($__interval), \"storageTargetID\" fill(none)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"inodesTotal"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": []
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Total Inodes on Storage Targets",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"format": "none",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    }
+	],
+	"refresh": false,
+	"schemaVersion": 20,
+	"style": "dark",
+	"tags": [
+	    "BeeGFS Plugin"
+	],
+	"templating": {
+	    "list": []
+	},
+	"time": {
+	    "from": "now-1h",
+	    "to": "now"
+	},
+	"timepicker": {
+	    "refresh_intervals": [
+		"5s",
+		"10s",
+		"30s",
+		"1m",
+		"5m",
+		"15m",
+		"30m",
+		"1h",
+		"2h",
+		"1d"
+	    ],
+	    "time_options": [
+		"5m",
+		"15m",
+		"1h",
+		"6h",
+		"12h",
+		"24h",
+		"2d",
+		"7d",
+		"30d"
+	    ]
+	},
+	"timezone": "",
+	"title": "BeeGFS-DF",
+	"uid": "0ylofojmk",
+	"version": 7
+    },
+    "overwrite": true
+}

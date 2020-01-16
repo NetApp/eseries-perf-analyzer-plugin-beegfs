@@ -1,0 +1,539 @@
+{
+    "dashboard": {
+	"annotations": {
+	    "list": [
+		{
+		    "builtIn": 1,
+		    "datasource": "-- Grafana --",
+		    "enable": true,
+		    "hide": true,
+		    "iconColor": "rgba(0, 211, 255, 1)",
+		    "name": "Annotations & Alerts",
+		    "type": "dashboard"
+		}
+	    ]
+	},
+	"editable": true,
+	"gnetId": null,
+	"graphTooltip": 0,
+	"id": null,
+	"iteration": 1578101454504,
+	"links": [
+	    {
+		"asDropdown": true,
+		"icon": "external link",
+		"tags": [
+		    "BeeGFS Plugin"
+		],
+		"title": "Related Dashboards",
+		"type": "dashboards"
+	    }
+	],
+	"panels": [
+	    {
+		"datasource": null,
+		"gridPos": {
+		    "h": 1,
+		    "w": 24,
+		    "x": 0,
+		    "y": 0
+		},
+		"id": 5,
+		"title": "Storage Target Stats",
+		"type": "row"
+	    },
+	    {
+		"aliasColors": {
+		    "Free": "#EAB839"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 24,
+		    "x": 0,
+		    "y": 1
+		},
+		"id": 1,
+		"legend": {
+		    "avg": false,
+		    "current": false,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "Free Space On $tag_storageTargetID",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "storageTargetID"
+				],
+				"type": "tag"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "storageTargets",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"diskSpaceFree"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": [
+			    {
+				"key": "storageTargetID",
+				"operator": "=~",
+				"value": "/^$storageTargetID$/"
+			    }
+			]
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Disk Space",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"decimals": 2,
+			"format": "bytes",
+			"label": null,
+			"logBase": 2,
+			"max": null,
+			"min": null,
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"aliasColors": {
+		    "Free": "#EAB839"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 24,
+		    "x": 0,
+		    "y": 8
+		},
+		"id": 2,
+		"interval": "",
+		"legend": {
+		    "alignAsTable": false,
+		    "avg": false,
+		    "current": false,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "Free Inodes On $tag_storageTargetID",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "storageTargetID"
+				],
+				"type": "tag"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "storageTargets",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"inodesFree"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": [
+			    {
+				"key": "storageTargetID",
+				"operator": "=~",
+				"value": "/^$storageTargetID$/"
+			    }
+			]
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Inodes",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"decimals": 0,
+			"format": "short",
+			"label": null,
+			"logBase": 10,
+			"max": null,
+			"min": null,
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"cacheTimeout": null,
+		"colorBackground": false,
+		"colorValue": false,
+		"colors": [
+		    "rgba(245, 54, 54, 0.9)",
+		    "rgba(237, 129, 40, 0.89)",
+		    "rgba(50, 172, 45, 0.97)"
+		],
+		"datasource": "BeeGFSMon",
+		"format": "none",
+		"gauge": {
+		    "maxValue": 100,
+		    "minValue": 0,
+		    "show": false,
+		    "thresholdLabels": false,
+		    "thresholdMarkers": true
+		},
+		"gridPos": {
+		    "h": 7,
+		    "w": 24,
+		    "x": 0,
+		    "y": 15
+		},
+		"id": 3,
+		"interval": null,
+		"links": [],
+		"mappingType": 1,
+		"mappingTypes": [
+		    {
+			"name": "value to text",
+			"value": 1
+		    },
+		    {
+			"name": "range to text",
+			"value": 2
+		    }
+		],
+		"maxDataPoints": 100,
+		"maxPerRow": 4,
+		"nullPointMode": "connected",
+		"nullText": null,
+		"options": {},
+		"postfix": "",
+		"postfixFontSize": "50%",
+		"prefix": "",
+		"prefixFontSize": "50%",
+		"rangeMaps": [
+		    {
+			"from": "null",
+			"text": "N/A",
+			"to": "null"
+		    }
+		],
+		"repeat": "storageTargetID",
+		"repeatDirection": "h",
+		"scopedVars": {
+		    "storageTargetID": {
+			"isNone": true,
+			"selected": true,
+			"text": "None",
+			"value": ""
+		    }
+		},
+		"sparkline": {
+		    "fillColor": "rgba(31, 118, 189, 0.18)",
+		    "full": false,
+		    "lineColor": "rgb(31, 120, 193)",
+		    "show": false
+		},
+		"tableColumn": "",
+		"targets": [
+		    {
+			"alias": "Target Consistency State",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"limit": "1",
+			"measurement": "storageTargets",
+			"orderByTime": "DESC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "table",
+			"select": [
+			    [
+				{
+				    "params": [
+					"targetConsistencyState"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "last"
+				}
+			    ]
+			],
+			"tags": [
+			    {
+				"key": "storageTargetID",
+				"operator": "=~",
+				"value": "/^$storageTargetID$/"
+			    }
+			]
+		    }
+		],
+		"thresholds": "1",
+		"title": "Consistency State for Target $storageTargetID",
+		"type": "singlestat",
+		"valueFontSize": "80%",
+		"valueMaps": [],
+		"valueName": "first"
+	    }
+	],
+	"refresh": "5s",
+	"schemaVersion": 20,
+	"style": "dark",
+	"tags": [
+	    "BeeGFS Plugin"
+	],
+	"templating": {
+	    "list": [
+		{
+		    "allValue": null,
+		    "current": {
+			"isNone": true,
+			"text": "None",
+			"value": ""
+		    },
+		    "datasource": "BeeGFSMon",
+		    "definition": "",
+		    "hide": 0,
+		    "includeAll": false,
+		    "label": "Storage ID",
+		    "multi": false,
+		    "name": "storageID",
+		    "options": [],
+		    "query": "show tag values from storage with key IN ( \"nodeID\") ",
+		    "refresh": 1,
+		    "regex": "",
+		    "skipUrlSync": false,
+		    "sort": 0,
+		    "tagValuesQuery": "",
+		    "tags": [],
+		    "tagsQuery": "",
+		    "type": "query",
+		    "useTags": false
+		},
+		{
+		    "allValue": null,
+		    "current": {
+			"text": "All",
+			"value": "$__all"
+		    },
+		    "datasource": "BeeGFSMon",
+		    "definition": "",
+		    "hide": 0,
+		    "includeAll": true,
+		    "label": "Target ID",
+		    "multi": true,
+		    "name": "storageTargetID",
+		    "options": [],
+		    "query": "show tag values from storageTargets with key = \"storageTargetID\" where nodeID =~ /^$storageID$/",
+		    "refresh": 1,
+		    "regex": "",
+		    "skipUrlSync": false,
+		    "sort": 0,
+		    "tagValuesQuery": "",
+		    "tags": [],
+		    "tagsQuery": "",
+		    "type": "query",
+		    "useTags": false
+		}
+	    ]
+	},
+	"time": {
+	    "from": "now-1h",
+	    "to": "now"
+	},
+	"timepicker": {
+	    "refresh_intervals": [
+		"5s",
+		"10s",
+		"30s",
+		"1m",
+		"5m",
+		"15m",
+		"30m",
+		"1h",
+		"2h",
+		"1d"
+	    ],
+	    "time_options": [
+		"5m",
+		"15m",
+		"1h",
+		"6h",
+		"12h",
+		"24h",
+		"2d",
+		"7d",
+		"30d"
+	    ]
+	},
+	"timezone": "",
+	"title": "BeeGFS Storage Targets",
+	"uid": "uY2Ppv-Zk",
+	"version": 9
+    },
+    "overwrite": true
+}

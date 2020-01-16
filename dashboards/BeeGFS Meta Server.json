@@ -1,0 +1,777 @@
+{
+    "dashboard": {
+	"annotations": {
+	    "list": [
+		{
+		    "builtIn": 1,
+		    "datasource": "-- Grafana --",
+		    "enable": true,
+		    "hide": true,
+		    "iconColor": "rgba(0, 211, 255, 1)",
+		    "name": "Annotations & Alerts",
+		    "type": "dashboard"
+		}
+	    ]
+	},
+	"editable": true,
+	"gnetId": null,
+	"graphTooltip": 0,
+	"id": null,
+	"iteration": 1576102519125,
+	"links": [
+	    {
+		"asDropdown": true,
+		"icon": "external link",
+		"tags": [
+		    "BeeGFS Plugin"
+		],
+		"title": "Related Dashboards",
+		"type": "dashboards"
+	    }
+	],
+	"panels": [
+	    {
+		"collapsed": false,
+		"datasource": null,
+		"gridPos": {
+		    "h": 1,
+		    "w": 24,
+		    "x": 0,
+		    "y": 1
+		},
+		"id": 10,
+		"panels": [],
+		"title": "Meta Server Stats",
+		"type": "row"
+	    },
+	    {
+		"aliasColors": {
+		    "Received": "#BF1B00",
+		    "Sent": "#EAB839"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 12,
+		    "x": 0,
+		    "y": 2
+		},
+		"id": 5,
+		"legend": {
+		    "avg": false,
+		    "current": false,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "Sent",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "highResMeta",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT sum(\"netSendBytes\") FROM \"highResMeta\" WHERE \"nodeID\" =~ /^$metaID$/ AND $timeFilter GROUP BY time($__interval) fill(previous)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"netSendBytes"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": [
+			    {
+				"key": "nodeID",
+				"operator": "=~",
+				"value": "/^$metaID$/"
+			    }
+			]
+		    },
+		    {
+			"alias": "Received",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "highResMeta",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"netRecvBytes"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": [
+			    {
+				"key": "nodeID",
+				"operator": "=~",
+				"value": "/^$metaID$/"
+			    }
+			]
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Network Traffic",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"decimals": 0,
+			"format": "decbytes",
+			"label": null,
+			"logBase": 10,
+			"max": null,
+			"min": "0",
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"aliasColors": {
+		    "Processed": "#EAB839",
+		    "Queued": "#BF1B00"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 12,
+		    "x": 12,
+		    "y": 2
+		},
+		"id": 4,
+		"legend": {
+		    "avg": false,
+		    "current": false,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "Processed",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"limit": "",
+			"measurement": "highResMeta",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"workRequests"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"slimit": "",
+			"tags": [
+			    {
+				"key": "nodeID",
+				"operator": "=~",
+				"value": "/^$metaID$/"
+			    }
+			]
+		    },
+		    {
+			"alias": "Queued",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"limit": "",
+			"measurement": "highResMeta",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"queuedRequests"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"slimit": "",
+			"tags": [
+			    {
+				"key": "nodeID",
+				"operator": "=~",
+				"value": "/^$metaID$/"
+			    }
+			]
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Work Requests",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"decimals": 0,
+			"format": "short",
+			"label": null,
+			"logBase": 10,
+			"max": null,
+			"min": "0",
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"aliasColors": {
+		    "Responding": "#EAB839",
+		    "meta.last": "#447EBC"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 12,
+		    "x": 0,
+		    "y": 9
+		},
+		"id": 8,
+		"legend": {
+		    "avg": false,
+		    "current": false,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": true,
+		"targets": [
+		    {
+			"alias": "Responding",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "meta",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"query": "SELECT sum(\"isResponding\") FROM \"meta\" WHERE \"nodeID\" =~ /^$metaID$/ AND $timeFilter GROUP BY time($__interval) fill(previous)",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"isResponding"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "min"
+				}
+			    ]
+			],
+			"tags": [
+			    {
+				"key": "nodeID",
+				"operator": "=~",
+				"value": "/^$metaID$/"
+			    }
+			]
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Availability",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": "0",
+			"show": false
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    },
+	    {
+		"aliasColors": {
+		    "Direct": "#BF1B00",
+		    "Indirect": "#EAB839"
+		},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "BeeGFSMon",
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		    "h": 7,
+		    "w": 12,
+		    "x": 12,
+		    "y": 9
+		},
+		"id": 7,
+		"legend": {
+		    "avg": false,
+		    "current": false,
+		    "max": false,
+		    "min": false,
+		    "show": true,
+		    "total": false,
+		    "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"links": [],
+		"nullPointMode": "null",
+		"options": {
+		    "dataLinks": []
+		},
+		"percentage": false,
+		"pointradius": 5,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		    {
+			"alias": "Indirect",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "meta",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"indirectWorkListSize"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": [
+			    {
+				"key": "nodeID",
+				"operator": "=~",
+				"value": "/^$metaID$/"
+			    }
+			]
+		    },
+		    {
+			"alias": "Direct",
+			"dsType": "influxdb",
+			"groupBy": [
+			    {
+				"params": [
+				    "$__interval"
+				],
+				"type": "time"
+			    },
+			    {
+				"params": [
+				    "none"
+				],
+				"type": "fill"
+			    }
+			],
+			"measurement": "meta",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+			    [
+				{
+				    "params": [
+					"directWorkListSize"
+				    ],
+				    "type": "field"
+				},
+				{
+				    "params": [],
+				    "type": "max"
+				}
+			    ]
+			],
+			"tags": [
+			    {
+				"key": "nodeID",
+				"operator": "=~",
+				"value": "/^$metaID$/"
+			    }
+			]
+		    }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [],
+		"timeShift": null,
+		"title": "Worklist Size",
+		"tooltip": {
+		    "shared": true,
+		    "sort": 0,
+		    "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		    "buckets": null,
+		    "mode": "time",
+		    "name": null,
+		    "show": true,
+		    "values": []
+		},
+		"yaxes": [
+		    {
+			"decimals": 0,
+			"format": "short",
+			"label": null,
+			"logBase": 10,
+			"max": null,
+			"min": "0",
+			"show": true
+		    },
+		    {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": false
+		    }
+		],
+		"yaxis": {
+		    "align": false,
+		    "alignLevel": null
+		}
+	    }
+	],
+	"refresh": "5s",
+	"schemaVersion": 20,
+	"style": "dark",
+	"tags": [
+	    "BeeGFS Plugin"
+	],
+	"templating": {
+	    "list": [
+		{
+		    "allValue": null,
+		    "current": {
+			"text": "bmr730au",
+			"value": "bmr730au"
+		    },
+		    "datasource": "BeeGFSMon",
+		    "definition": "",
+		    "hide": 0,
+		    "includeAll": false,
+		    "label": "Meta ID",
+		    "multi": false,
+		    "name": "metaID",
+		    "options": [],
+		    "query": "show tag values from meta with key = \"nodeID\" ",
+		    "refresh": 2,
+		    "regex": "",
+		    "skipUrlSync": false,
+		    "sort": 0,
+		    "tagValuesQuery": "",
+		    "tags": [],
+		    "tagsQuery": "",
+		    "type": "query",
+		    "useTags": false
+		}
+	    ]
+	},
+	"time": {
+	    "from": "now-1h",
+	    "to": "now"
+	},
+	"timepicker": {
+	    "refresh_intervals": [
+		"5s",
+		"10s",
+		"30s",
+		"1m",
+		"5m",
+		"15m",
+		"30m",
+		"1h",
+		"2h",
+		"1d"
+	    ],
+	    "time_options": [
+		"5m",
+		"15m",
+		"1h",
+		"6h",
+		"12h",
+		"24h",
+		"2d",
+		"7d",
+		"30d"
+	    ]
+	},
+	"timezone": "",
+	"title": "BeeGFS Meta Server",
+	"uid": "mbcfpDaWk",
+	"version": 5
+    },
+    "overwrite": true
+}

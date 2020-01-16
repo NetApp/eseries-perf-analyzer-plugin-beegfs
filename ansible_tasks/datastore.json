@@ -1,0 +1,10 @@
+{
+    "name":"BeeGFSMon",
+    "label": "BeeGFSMon",
+    "type": "influxdb",
+    "url":"http://influxdb:8086",
+    "access":"proxy",
+    "basicAuth": false,
+    "isDefault": false,
+    "database":"beegfs_mon"
+}
