@@ -3,21 +3,30 @@ Overview of the E-Series Performance Analyzer Plugin for BeeGFS
 
 The BeeGFS Monitoring service (BeeGFS Mon) collects statistics from a BeeGFS filesystem and writes them to a time series database (InfluxDB). Data in the time series database can be visualized using a tool like Grafana, and the BeeGFS Mon package provides several predefined Grafana dashboards. As the BeeGFS Mon package does not include InfluxDB or Grafana, the E-Series Performance Analyzer provides a convenient "batteries included" platform to deploy BeeGFS Mon. 
 
-For more information on BeeGFS Mon see https://www.beegfs.io/wiki/Mon. For more information on the E-Series Performance Analyzer please see the README.md file in this project's root directory.
+For more information on BeeGFS Mon see https://www.beegfs.io/wiki/Mon. For more information on the E-Series Performance Analyzer please see https://github.com/NetApp/eseries-perf-analyzer/blob/master/README.md.
 
 Plugin Prerequisites
 --------------------
+* An installation of the NetApp E-Series Performance Analyzer version 2.1 or later (https://github.com/NetApp/eseries-perf-analyzer).
 * The server running the E-Series Performance Analyzer must be able to access the server running the BeeGFS Management service. In most cases this should be enough to allow the Docker container running BeeGFS Mon to reach the BeeGFS Management server over the Docker network used by the E-Series Performance Analyzer. 
     * In some environments the network or other configuration on the server running Docker may not be setup to allow this, and changes may be required this documentation cannot account for.
 
 What configuration is required before enabling this plugin?
 -----------------------------------------------------------
+Note: Please see the E-Series Performance Analyzer's README (https://github.com/NetApp/eseries-perf-analyzer/blob/master/README.md) for the latest guidance on working with plugins. The documentation provided below specific to installing/configuring/starting/updating plugins is current as of this README's publishing date. 
 
-#### Initially configuring the plugin:
-In the `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` file, update the `sysMgmtdHost` to point at the IP address of the BeeGFS Management server in your environment. Please reference the E-Series Performance Analyzer's README.md file in the project's root directory for how to enable plugins.
+#### Downloading and installing the plugin:
+1. Navigate to the `plugins/` directory of your E-Series Performance Analyzer installation.
+2. Under `plugins/` create a new directory `beegfs_monitoring`.
+3. Clone this GitHub repository to the `plugins/beegfs_monitoring` directory (e.g. `git clone <url> beegfs_monitoring`). 
+
+#### Initially configuring and starting the plugin:
+1. In the `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` file, update the `sysMgmtdHost` to point at the IP address of the BeeGFS Management server in your environment. 
+2. To build all plugin requirements, navigate to the root directory of the E-Series Performance Analyzer and run `make build-plugins`.
+3. To run all plugin(s) run `make run-plugins`.
 
 #### Updating the plugin's configuration:
-If you need to change the IP used for the BeeGFS Management server simply update the `sysMgmtdHost` line in `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` then restart the E-Series Performance Analyzer by running `make restart` while in the project's root directory.
+If you need to change the IP used for the BeeGFS Management server simply update the `sysMgmtdHost` line in `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` then restart the E-Series Performance Analyzer by navigating to the root directory and running `make restart`.
 
 What is included with this plugin?
 ----------------------------------
@@ -37,6 +46,8 @@ What is included with this plugin?
     * BeeGFS Overview
     * BeeGFS Storage Server
     * BeeGFS Storage Targets 
+    
+Note: Minor modifications were made to the default dashboards included with BeeGFS Mon, in particular to ensure data was displayed as expected with the version of InfluxDB used by the E-Series Performance Analyzer. 
 
 What happens when I enable this plugin? 
 ---------------------------------------
@@ -57,7 +68,7 @@ Logs from the `beegfs_mon` container including the latest contents of `/var/log/
 (0) Jan03 01:02:16 Main [InfluxDB.cpp:28] >> Coudn't reach InfluxDB service.
 (0) Jan03 01:02:16 Main [App.cpp:52] >> Generic error: Connection to InfluxDB failed.
 ```
-For recommendations on troubleshooting general issues with the E-Series Performance Analyzer please see the README.md file in this project's root directory.
+For recommendations on troubleshooting general issues with the E-Series Performance Analyzer please reference https://github.com/NetApp/eseries-perf-analyzer/blob/master/README.md.
 
 FAQs
 -----
