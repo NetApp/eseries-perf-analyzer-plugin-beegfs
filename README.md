@@ -22,8 +22,9 @@ Note: Please see the E-Series Performance Analyzer's README (https://github.com/
 
 #### Initially configuring and starting the plugin:
 1. In the `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` file, update the `sysMgmtdHost` to point at the IP address of the BeeGFS Management server in your environment. 
-2. To build all plugin requirements, navigate to the root directory of the E-Series Performance Analyzer and run `make build-plugins`.
-3. To run all plugin(s) run `make run-plugins`.
+2. To build/start the plugin, navigate to the root directory of the E-Series Performance Analyzer and use one of the following commands:
+    * If the E-Series Performance Analyzer is already running use: `make restart`.
+    * If the E-Series Performance Analyzer is stopped or this is the first time starting it use: `make run`.
 
 #### Updating the plugin's configuration:
 If you need to change the IP used for the BeeGFS Management server simply update the `sysMgmtdHost` line in `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` then restart the E-Series Performance Analyzer by navigating to the root directory and running `make restart`.
