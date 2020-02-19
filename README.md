@@ -57,16 +57,12 @@ Troubleshooting
 ---------------
 Logs from the `beegfs_mon` container including the latest contents of `/var/log/beegfs-mon.log` can be viewed by running `docker logs beegfs_mon`. For example if the BeeGFS Management IP is not set correctly or otherwise cannot be reached, you will see output like the following:
 ```
-#docker logs beegfs_mon
-(0) Jan03 01:01:56 Main [InfluxDB.cpp:298] >> Pinging InfluxDB failed due to Curl error. Error: Could not resolve host: influxdb
-(0) Jan03 01:01:56 Main [InfluxDB.cpp:28] >> Coudn't reach InfluxDB service.
-(2) Jan03 01:01:56 Main [InfluxDB.cpp:32] >> Retrying in 10 seconds.
-(0) Jan03 01:02:06 Main [InfluxDB.cpp:298] >> Pinging InfluxDB failed due to Curl error. Error: Could not resolve host: influxdb
-(0) Jan03 01:02:06 Main [InfluxDB.cpp:28] >> Coudn't reach InfluxDB service.
-(2) Jan03 01:02:06 Main [InfluxDB.cpp:32] >> Retrying in 10 seconds.
-(0) Jan03 01:02:16 Main [InfluxDB.cpp:298] >> Pinging InfluxDB failed due to Curl error. Error: Could not resolve host: influxdb
-(0) Jan03 01:02:16 Main [InfluxDB.cpp:28] >> Coudn't reach InfluxDB service.
-(0) Jan03 01:02:16 Main [App.cpp:52] >> Generic error: Connection to InfluxDB failed.
+# docker logs beegfs_mon
+(1) Feb19 18:14:28 Main [App.cpp:301] >> Detaching process...
+(1) Feb19 18:14:28 Main [App.cpp:251] >> Version: 7.1.4
+(2) Feb19 18:14:28 Main [App.cpp:279] >> Usable NICs: eth0(TCP) 
+(3) Feb19 18:14:34 NodeListReq [NodeListRequestor.cpp:41] >> Did not receive a response from management node!
+(3) Feb19 18:15:10 NodeListReq [NodeListRequestor.cpp:41] >> Did not receive a response from management node!
 ```
 For recommendations on troubleshooting general issues with the E-Series Performance Analyzer please reference https://github.com/NetApp/eseries-perf-analyzer/blob/master/README.md.
 
@@ -78,6 +74,6 @@ FAQs
 * Can I edit the provided dashboards? 
     * To prevent future updates to the plugin from overriding any user customizations, the E-Series Performance Analyzer requires you to create a copy of the dashboard you wish to modify.
 * Where can I find updates to the BeeGFS Plugin?
-    * Currently any updates to this plugin will be delivered alongside future releases of the E-Series Performance Analyzer. Special considerations or prerequisites to upgrading the BeeGFS plugin will be documented in the README provided with any future releases of the plugin.
+    * Currently any updates to this plugin will be delivered in this repository. Special considerations or prerequisites to upgrading the BeeGFS plugin will be documented in the README provided with any future releases of the plugin.
 * I'm needing to run the BeeGFS Plugin in an air-gapped environment (e.g. no internet access), how can I use the plugin?  
     * Provided you have repository mirrors setup in the air-gapped environment for both Ubuntu and BeeGFS, there are two files in the `plugins/beegfs_monitoring/beegfs_mon` directory that can be updated to point at your internal repository mirror URLs. Update `repomirror_sources.list` with the URL(s) for Ubuntu, and `repomirror_beegfs-deb9.list` with the URL for BeeGFS. Provided the GPG key is the same for the BeeGFS repository you do not need to update the `DEB-GPG-KEY-beegfs` file. 
