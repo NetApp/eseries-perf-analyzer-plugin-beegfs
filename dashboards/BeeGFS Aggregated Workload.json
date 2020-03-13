@@ -87,7 +87,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -114,6 +114,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -124,7 +130,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -243,7 +249,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -280,7 +286,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -307,6 +313,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -399,7 +411,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -426,6 +438,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -436,7 +454,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -463,6 +481,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -555,7 +579,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -582,6 +606,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -592,7 +622,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -619,6 +649,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -711,7 +747,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -738,6 +774,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -748,7 +790,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "1s"
+				    "$__interval"
 				],
 				"type": "time"
 			    },
@@ -775,6 +817,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
