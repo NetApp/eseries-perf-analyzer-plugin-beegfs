@@ -58,6 +58,7 @@
 		    "y": 2
 		},
 		"id": 2,
+		"interval": "1s",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -157,6 +158,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -220,6 +227,7 @@
 		    "y": 8
 		},
 		"id": 4,
+		"interval": "1s",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -276,6 +284,12 @@
 				{
 				    "params": [],
 				    "type": "sum"
+				},
+				{
+				    "params": [
+					"/ ($__interval_ms / 1000)"
+				    ],
+				    "type": "math"
 				}
 			    ]
 			],
@@ -382,6 +396,7 @@
 		    "y": 8
 		},
 		"id": 6,
+		"interval": "1s",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -550,6 +565,7 @@
 		    "y": 14
 		},
 		"id": 8,
+		"interval": "1s",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -718,6 +734,7 @@
 		    "y": 14
 		},
 		"id": 10,
+		"interval": "1s",
 		"legend": {
 		    "avg": false,
 		    "current": false,

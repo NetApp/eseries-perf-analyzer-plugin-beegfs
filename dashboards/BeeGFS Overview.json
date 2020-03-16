@@ -54,6 +54,7 @@
 		    "y": 1
 		},
 		"id": 11,
+		"interval": "1s",
 		"options": {},
 		"pageSize": null,
 		"showHeader": true,
@@ -189,6 +190,7 @@
 		    "y": 1
 		},
 		"id": 6,
+		"interval": "1s",
 		"legend": {
 		    "alignAsTable": true,
 		    "avg": false,
@@ -366,6 +368,7 @@
 		    "y": 8
 		},
 		"id": 15,
+		"interval": "1s",
 		"panels": [],
 		"title": "Storage",
 		"type": "row"
@@ -563,6 +566,7 @@
 		    "y": 15
 		},
 		"id": 10,
+		"interval": "1s",
 		"options": {},
 		"pageSize": null,
 		"showHeader": true,
@@ -698,6 +702,7 @@
 		    "y": 15
 		},
 		"id": 4,
+		"interval": "1s",
 		"legend": {
 		    "alignAsTable": true,
 		    "avg": false,
@@ -877,6 +882,7 @@
 		    "y": 22
 		},
 		"id": 8,
+		"interval": "1s",
 		"links": [],
 		"options": {},
 		"pageSize": null,
