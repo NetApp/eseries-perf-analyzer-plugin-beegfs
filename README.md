@@ -21,13 +21,13 @@ Note: Please see the E-Series Performance Analyzer's README (https://github.com/
 3. Clone this GitHub repository to the `plugins/beegfs_monitoring` directory (e.g. `git clone <url> beegfs_monitoring`). 
 
 #### Initially configuring and starting the plugin:
-1. In the `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` file, update the `sysMgmtdHost` to point at the IP address of the BeeGFS Management server in your environment. 
+1. In the `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` file, update the `sysMgmtdHost` variable to point at the IP address of the BeeGFS Management server in your environment. By default, data points are retained for 4 weeks before being dropped by the database. This value is configurable via the 'dbRetentionDuration' variable. Valid values are described in the config file in the section describing this variable.
 2. To build/start the plugin, navigate to the root directory of the E-Series Performance Analyzer and use one of the following commands:
     * If the E-Series Performance Analyzer is already running use: `make restart`.
     * If the E-Series Performance Analyzer is stopped or this is the first time starting it use: `make run`.
 
 #### Updating the plugin's configuration:
-If you need to change the IP used for the BeeGFS Management server simply update the `sysMgmtdHost` line in `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` then restart the E-Series Performance Analyzer by navigating to the root directory and running `make restart`.
+Any changes to the configuration file (located at `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf`) requires a restart of the E-Series Performance Analyzer. This can be done by navigating to the root directory of the project (not just the plugin) and running 'make restart'.
 
 What is included with this plugin?
 ----------------------------------
