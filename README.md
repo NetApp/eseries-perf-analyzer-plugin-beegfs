@@ -22,7 +22,7 @@ Note: Please see the E-Series Performance Analyzer's README (https://github.com/
 
 #### Initially configuring and starting the plugin:
 1. In the `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf` file, update the `sysMgmtdHost` variable to point at the IP address of the BeeGFS Management server in your environment.
-2. By default, data points are retained for 4 weeks before being dropped by the database. This value is configurable via the 'dbRetentionDuration' variable. Valid values are described in the config file in the section describing this variable. (See NOTE below about changing this after first-boot)
+2. By default, data points are retained for 4 weeks before being dropped by the database. This value is configurable via the `dbRetentionDuration` variable. Valid values are described in the config file in the section describing this variable. (See NOTE below about changing this after first-boot)
 3. To build/start the plugin, navigate to the root directory of the E-Series Performance Analyzer and use one of the following commands:
     * If the E-Series Performance Analyzer is already running use: `make restart`.
     * If the E-Series Performance Analyzer is stopped or this is the first time starting it use: `make run`.
@@ -30,7 +30,7 @@ Note: Please see the E-Series Performance Analyzer's README (https://github.com/
 #### Updating the plugin's configuration:
 Any changes to the configuration file (located at `plugins/beegfs_monitoring/beegfs_mon/beegfs-mon.conf`) requires a restart of the E-Series Performance Analyzer. This can be done by navigating to the root directory of the project (not just the plugin) and running 'make restart'.
 
-NOTE: The 'dbRetentionDuration' variable described above only takes effect when the database is created the first time. In order to update the retention duration at any point in the future you must do so via the command line. We have provided a simple one-line Docker command for this purpose:
+NOTE: The `dbRetentionDuration` variable described above only takes effect when the database is created the first time. In order to update the retention duration at any point in the future you must do so via the command line. We have provided a simple one-line Docker command for this purpose:
 ```
 docker exec -it influxdb influx -execute 'alter retention policy auto on beegfs_mon duration 4w'
 ```
