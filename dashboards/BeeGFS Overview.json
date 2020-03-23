@@ -189,8 +189,9 @@
 		    "x": 6,
 		    "y": 1
 		},
+		"hiddenSeries": false,
 		"id": 6,
-		"interval": "1s",
+		"interval": "",
 		"legend": {
 		    "alignAsTable": true,
 		    "avg": false,
@@ -222,7 +223,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -254,13 +255,7 @@
 				},
 				{
 				    "params": [],
-				    "type": "sum"
-				},
-				{
-				    "params": [
-					"/ ($__interval_ms / 1000)"
-				    ],
-				    "type": "math"
+				    "type": "mean"
 				}
 			    ]
 			],
@@ -271,7 +266,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -291,7 +286,7 @@
 			"measurement": "highResMeta",
 			"orderByTime": "ASC",
 			"policy": "default",
-			"refId": "B",
+			"refId": "C",
 			"resultFormat": "time_series",
 			"select": [
 			    [
@@ -303,13 +298,7 @@
 				},
 				{
 				    "params": [],
-				    "type": "sum"
-				},
-				{
-				    "params": [
-					"/ ($__interval_ms / 1000)"
-				    ],
-				    "type": "math"
+				    "type": "mean"
 				}
 			    ]
 			],
@@ -387,8 +376,8 @@
 		    "x": 0,
 		    "y": 9
 		},
+		"hiddenSeries": false,
 		"id": 2,
-		"interval": "1s",
 		"legend": {
 		    "alignAsTable": true,
 		    "avg": false,
@@ -420,7 +409,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -452,13 +441,7 @@
 				},
 				{
 				    "params": [],
-				    "type": "sum"
-				},
-				{
-				    "params": [
-					"/ ($__interval_ms / 1000)"
-				    ],
-				    "type": "math"
+				    "type": "mean"
 				}
 			    ]
 			],
@@ -469,7 +452,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -501,13 +484,7 @@
 				},
 				{
 				    "params": [],
-				    "type": "sum"
-				},
-				{
-				    "params": [
-					"/ ($__interval_ms / 1000)"
-				    ],
-				    "type": "math"
+				    "type": "mean"
 				}
 			    ]
 			],
@@ -702,6 +679,7 @@
 		    "x": 6,
 		    "y": 15
 		},
+		"hiddenSeries": false,
 		"id": 4,
 		"interval": "1s",
 		"legend": {
@@ -735,7 +713,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -767,13 +745,7 @@
 				},
 				{
 				    "params": [],
-				    "type": "sum"
-				},
-				{
-				    "params": [
-					"/ ($__interval_ms / 1000)"
-				    ],
-				    "type": "math"
+				    "type": "mean"
 				}
 			    ]
 			],
@@ -784,7 +756,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -816,13 +788,7 @@
 				},
 				{
 				    "params": [],
-				    "type": "sum"
-				},
-				{
-				    "params": [
-					"/ ($__interval_ms / 1000)"
-				    ],
-				    "type": "math"
+				    "type": "mean"
 				}
 			    ]
 			],
@@ -1101,6 +1067,7 @@
 		    "x": 0,
 		    "y": 30
 		},
+		"hiddenSeries": false,
 		"id": 17,
 		"legend": {
 		    "alignAsTable": true,
@@ -1227,6 +1194,7 @@
 		    "x": 12,
 		    "y": 30
 		},
+		"hiddenSeries": false,
 		"id": 18,
 		"legend": {
 		    "alignAsTable": true,
@@ -1341,7 +1309,7 @@
 	    }
 	],
 	"refresh": "5s",
-	"schemaVersion": 20,
+	"schemaVersion": 21,
 	"style": "dark",
 	"tags": [
 	    "BeeGFS Plugin"
@@ -1370,7 +1338,7 @@
 	"timezone": "",
 	"title": "BeeGFS Overview",
 	"uid": "lYxacvaWk",
-	"version": 9
+	"version": 22
     },
     "overwrite": true
 }

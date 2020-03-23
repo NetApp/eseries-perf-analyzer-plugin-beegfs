@@ -36,7 +36,7 @@
 		    "h": 1,
 		    "w": 24,
 		    "x": 0,
-		    "y": 1
+		    "y": 0
 		},
 		"id": 16,
 		"panels": [],
@@ -55,10 +55,11 @@
 		    "h": 6,
 		    "w": 24,
 		    "x": 0,
-		    "y": 2
+		    "y": 1
 		},
+		"hiddenSeries": false,
 		"id": 2,
-		"interval": "1s",
+		"interval": "",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -88,7 +89,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -118,7 +119,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -131,7 +132,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -161,7 +162,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -224,10 +225,11 @@
 		    "h": 6,
 		    "w": 12,
 		    "x": 0,
-		    "y": 8
+		    "y": 7
 		},
+		"hiddenSeries": false,
 		"id": 4,
-		"interval": "1s",
+		"interval": "",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -257,7 +259,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -287,7 +289,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -300,7 +302,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -330,7 +332,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -393,10 +395,11 @@
 		    "h": 6,
 		    "w": 12,
 		    "x": 12,
-		    "y": 8
+		    "y": 7
 		},
+		"hiddenSeries": false,
 		"id": 6,
-		"interval": "1s",
+		"interval": "",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -426,7 +429,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -456,7 +459,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -469,7 +472,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -499,7 +502,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -562,10 +565,11 @@
 		    "h": 6,
 		    "w": 12,
 		    "x": 0,
-		    "y": 14
+		    "y": 13
 		},
+		"hiddenSeries": false,
 		"id": 8,
-		"interval": "1s",
+		"interval": "",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -595,7 +599,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -625,7 +629,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -638,7 +642,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -668,7 +672,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -731,10 +735,11 @@
 		    "h": 6,
 		    "w": 12,
 		    "x": 12,
-		    "y": 14
+		    "y": 13
 		},
+		"hiddenSeries": false,
 		"id": 10,
-		"interval": "1s",
+		"interval": "",
 		"legend": {
 		    "avg": false,
 		    "current": false,
@@ -764,7 +769,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -794,7 +799,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -807,7 +812,7 @@
 			"groupBy": [
 			    {
 				"params": [
-				    "$__interval"
+				    "5s"
 				],
 				"type": "time"
 			    },
@@ -837,7 +842,7 @@
 				},
 				{
 				    "params": [
-					"/ ($__interval_ms / 1000)"
+					" / 5"
 				    ],
 				    "type": "math"
 				}
@@ -890,7 +895,7 @@
 	    }
 	],
 	"refresh": "5s",
-	"schemaVersion": 20,
+	"schemaVersion": 21,
 	"style": "dark",
 	"tags": [
 	    "BeeGFS Plugin"
@@ -919,7 +924,7 @@
 	"timezone": "",
 	"title": "BeeGFS Workload (Aggregated)",
 	"uid": "jEmx0JcZz",
-	"version": 6
+	"version": 25
     },
     "overwrite": true
 }
