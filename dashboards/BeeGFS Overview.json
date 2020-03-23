@@ -388,6 +388,7 @@
 		    "y": 9
 		},
 		"id": 2,
+		"interval": "1s",
 		"legend": {
 		    "alignAsTable": true,
 		    "avg": false,
