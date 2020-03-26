@@ -80,6 +80,9 @@ Logs from the `beegfs_mon` container including the latest contents of `/var/log/
 ```
 For recommendations on troubleshooting general issues with the E-Series Performance Analyzer please reference https://github.com/NetApp/eseries-perf-analyzer/blob/master/README.md.
 
+### Known Issues
+The `BeeGFS Workload (Aggregated)` dashboard displays a lot of data as a summation of all of your servers. As such, this dashboard's performance is heavily impacted by the chosen time range. A determination has been made that users would prefer much more accurate data on a more immediate basis, so the focus of these graphs is on that use case. Expect performance issues when viewing time ranges greater than one or two weeks on this dashboard.
+
 FAQs
 -----
 
