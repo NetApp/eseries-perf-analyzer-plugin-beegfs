@@ -1,14 +1,8 @@
 version: '2'
 services:
 
-  build_ubuntu:
-    build: ./beegfs_mon
-    image: ubuntu_beegfs_mon
-    networks:
-      - eseries_perf_analyzer
-
   beegfs_mon:
-    image: ubuntu_beegfs_mon
+    image: ${PROJ_NAME}-plugin/beegfs_monitoring/beegfs-mon
     stdin_open: true
     tty: true
     container_name: beegfs_mon
@@ -23,7 +17,6 @@ services:
         max-file: "5"
         max-size: 10m
 
-# TODO (bdustin): Update this before rebasing with "persistent_network" changes
 networks:
   eseries_perf_analyzer:
     external: true
